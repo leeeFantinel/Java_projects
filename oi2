@@ -1,0 +1,15 @@
+var fib = function(a) {
+	var array = [];
+  for (var i = 0; i < a; i++) {
+    if (i == 0 || i == 1) {
+      array.push(1);
+    } else {
+      array.push(array[i - 2] + array[i - 1]);
+    }
+  }
+  return array;
+}
+
+var numero = parseInt(prompt("Digite um número"));
+var result = fib(numero);
+alert(result);
