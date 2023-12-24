@@ -1,0 +1,85 @@
+/*
+ * Desenvolva uma calculadora que realiza operações básicas (adição, subtração, 
+   multiplicação, divisão). O usuário deve inserir dois números e a operação desejada.
+ */
+
+package com.mycompany.calculadora_java;
+
+import java.util.Scanner;
+        
+public class Calculadora_Java {
+    public static double multi(double a, double b){
+            return a * b;
+    }
+    public static double adicao (double a, double b){
+            return  a + b;
+    }
+    public static double subt(double a, double b){
+            return a - b;
+    }
+    public static double div(double a, double b){
+            if(b!= 0){
+                return a/b;
+            }else{
+              System.out.println("Não é possível dividir por zero.");
+              return Double.NaN;
+            }
+    }
+    
+    public static void main(String[] args) {
+        Scanner ler = new Scanner (System.in);
+        int op;
+        double numA;
+        double numB;
+        double resposta = 0;
+        int selecao; 
+        
+        char continuar = 's'; 
+        while(continuar == 's'|| continuar == 'S'){  
+            do{      
+        System.out.print("""
+                         Escolha a operacao que deseja fazer: 
+                         1 - Adicao
+                         2 - Subtracao
+                         3 - Divisao 
+                         4 - Multiplicacao
+                         --> """);
+        selecao = ler.nextInt();
+                if(selecao <= 0 || selecao >=5){
+                    System.out.print("Digite um número de 1 a 4.\n");
+                }
+            }while(selecao <= 0 || selecao >=5);
+        
+        System.out.print("Digite o primeiro número: ");
+        numA = ler.nextDouble();
+        
+        System.out.print("Digite o segundo número: ");
+        numB = ler.nextDouble();
+        
+        switch(selecao){
+            case 1: 
+                resposta = adicao(numA, numB);
+            break;
+            case 2:
+                resposta = subt(numA, numB);
+            break;
+            case 3:
+                resposta = div(numA, numB);
+            break;
+            case 4:
+                resposta = multi(numA, numB);
+            break;
+            default: 
+                System.out.print("Opção inválida");
+        }
+        
+        System.out.print("Resposta: " + resposta);
+        System.out.print("\nDeseja fazer outro cálculo? 1 - Sim 0 - Sair \n-->");
+        op = ler.nextInt();
+        if(op==0){
+            continuar = 'n';
+            ler.close();
+        }
+      }
+   }
+}
